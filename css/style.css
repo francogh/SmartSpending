@@ -29,8 +29,8 @@ body{
 /* BALANCE Y DINERO */
 .fondoSuperior{
     height: 40vh;
-    padding: 30px;
-    margin: 55px 5% 0px 5%;
+    padding: 20px;
+    margin: 55px 10px 0px 10px;
     background-color: var(--greenSlider);
     border-radius: 0 0 10px 10px;
 }
@@ -42,12 +42,18 @@ body{
 .dineroDisponible{
     font-size: 3rem;
 }
+@media (max-width: 400px){
+    .fondoSuperior th{
+       padding: 5px;
+    }
+    
+  }
 
 /* CONTENIDO BALANCE */
 .contenidoHome{
     height: 100vh;
-    padding: 30px;
-    margin: 0px 2% 0px 2%;
+    padding: 10px;
+    margin: 0px 2px 0px 2px;
     background-color: var(--background);
     border-radius: 10px 10px 0 0;
     box-shadow: 2px 2px 7px rgb(163, 177, 198), -2px -2px 7px rgb(163, 177, 198),
@@ -61,7 +67,8 @@ body{
 }
 .progress{
     margin-top: 10px;
- margin-bottom: 2%;
+    margin-bottom: 2%;
+   
 }
 
 .fondoSombreado{
@@ -84,6 +91,17 @@ body{
  .circleMore{
      color: var(--green);
  }
+
+ .addCircle:hover {
+  transition: 0.2s;
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  cursor: pointer;
+  
+}
+
 
  @media (max-width: 400px){
     .movimientos th{

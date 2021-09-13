@@ -37,10 +37,10 @@
                   <a class="nav-link active" aria-current="page" href="#">Balance</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Operaciones</a>
+                  <a class="nav-link" href="#">Todos los movimientos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Cargar Movimiento</a>
+                    <a class="nav-link" href="#">Descargar Movimientos</a>
                   </li>
               </ul>
             </div>
@@ -50,7 +50,7 @@
                         <!-- FONDO SUPERIOR -->
     <div class="fondoSuperior">
         <h5 class="tituloBalance text-center">BALANCE</h5>
-        <p class="dineroDisponible text-center">$11111  <i class="fas fa-plus-circle addCircle"></i></p>
+        <p class="dineroDisponible text-center">$10.000 <i class="fas fa-plus-circle addCircle"></i></p>
         <div class="contenidoHome">
           <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
@@ -70,7 +70,7 @@
                               <!-- POGRESO DIA -->
             <div class="tab-pane fondoSombreado fade show active" id="dia" role="tabpanel" aria-labelledby="home-tab">
               <div class="date text-center">
-                <input type="date">
+                <input type="date" id="fechaActual" value="" >
               </div>
               <div class="progress">
                 <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">ALIMENTOS</div>
@@ -95,6 +95,7 @@
                       <th scope="col" class="hiddDate"></th>Fecha</th>
                       <th scope="col">Rubro</th>
                       <th scope="col">Importe</th>
+                      <th scope="col">Borrar</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -102,12 +103,13 @@
                       <th scope="row" class="hiddDate">10/10/2021</th>
                       <td>Colectivo</td>
                       <td>$1000</td>
-                      
+                      <td><i class="fas fa-trash-alt"></i></td>
                     </tr>
                     <tr>
                       <th scope="row" class="hiddDate">10/10/2021</th>
                       <td>Alquiler</td>
                       <td>$200</td>
+                      <td><i class="fas fa-trash-alt"></i></td>
                     
                     </tr>
                   </tbody>
@@ -166,6 +168,6 @@
         </div>
     </div>
     
- 
+ <script src="./js/main.js"></script>
 </body>
 </html>
