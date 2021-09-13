@@ -50,10 +50,8 @@
                         <!-- FONDO SUPERIOR -->
     <div class="fondoSuperior">
         <h5 class="tituloBalance text-center">BALANCE</h5>
-        <p class="dineroDisponible text-center">$11111</p>
+        <p class="dineroDisponible text-center">$11111  <i class="fas fa-plus-circle addCircle"></i></p>
         <div class="contenidoHome">
-          
-
           <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
               <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#dia" type="button" role="tab" aria-controls="home" aria-selected="true">Día</button>
@@ -71,22 +69,52 @@
           <div class="tab-content " id="myTabContent">
                               <!-- POGRESO DIA -->
             <div class="tab-pane fondoSombreado fade show active" id="dia" role="tabpanel" aria-labelledby="home-tab">
-              
-              <div class="progress">
-                <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+              <div class="date text-center">
+                <input type="date">
               </div>
               <div class="progress">
-                <div class="progress-bar bg-info progress-bar-striped" role="progressbar" style="width: 85%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">85%</div>
+                <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">ALIMENTOS</div>
               </div>
               <div class="progress">
-                <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 15%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">15%</div>
+                <div class="progress-bar bg-info progress-bar-striped" role="progressbar" style="width: 85%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">CASA</div>
               </div>
               <div class="progress">
-                <div class="progress-bar bg-warning progress-bar-striped" role="progressbar" style="width: 2%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">2%</div>
+                <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 15%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">MOVILIDAD</div>
+              </div>
+              <div class="progress">
+                <div class="progress-bar bg-warning progress-bar-striped" role="progressbar" style="width: 2%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">VARIOS</div>
               </div>
               <div class="iconMore text-end">
-                <i class="fas fa-plus-circle"></i>
+                <i class="fas fa-plus-circle addCircle"></i>
               </div>
+
+              <div class="movimientos">
+                <table class="table table table-success table-striped table-responsive">
+                  <thead>
+                    <tr>
+                      <th scope="col" class="hiddDate"></th>Fecha</th>
+                      <th scope="col">Rubro</th>
+                      <th scope="col">Importe</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row" class="hiddDate">10/10/2021</th>
+                      <td>Colectivo</td>
+                      <td>$1000</td>
+                      
+                    </tr>
+                    <tr>
+                      <th scope="row" class="hiddDate">10/10/2021</th>
+                      <td>Alquiler</td>
+                      <td>$200</td>
+                    
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+
             </div>
                                     <!-- PROGRESO SEMANA -->
             <div class="tab-pane fondoSombreado fade" id="semana" role="tabpanel" aria-labelledby="profile-tab">

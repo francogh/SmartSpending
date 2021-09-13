@@ -72,9 +72,24 @@ body{
  }
  
  /* ICONO AGREGAR CONTENIDO */
- .fa-plus-circle{
+.addCircle{
+    color: yellow;
+}
+
+ .addCircle{
      font-size: 40px;
      color: var(--green)
  }
 
- 
+ .circleMore{
+     color: var(--green);
+ }
+
+ @media (max-width: 400px){
+    .movimientos th{
+        font-size: 10px;
+    }
+    .movimientos td{
+        font-size: 15px;
+    }
+  }
