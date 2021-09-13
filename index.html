@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="./js/main.js"></script> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="./js/popper.min.js"></script>
+    <script src="./js/bootstrap.min.js  "></script>
+    <script src="https://kit.fontawesome.com/0b51214ed8.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Smart Spending</title>
+</head>
+<body>
+                    <!-- BARRA DE NAVEGACION -->
+    <nav class="navbar navbar-light fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Smart<img src="./media/logo.png" alt="" srcset="" width="25px">Spending</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Smart<img src="./media/logo.png" alt="" srcset="" width="25px">Spending</h5>
+              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Balance</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Operaciones</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Cargar Movimiento</a>
+                  </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+                        <!-- FONDO SUPERIOR -->
+    <div class="fondoSuperior">
+        <h5 class="tituloBalance text-center">BALANCE</h5>
+        <p class="dineroDisponible text-center">$11111</p>
+        <div class="contenidoHome">
+          
+
+          <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#dia" type="button" role="tab" aria-controls="home" aria-selected="true">Día</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#semana" type="button" role="tab" aria-controls="profile" aria-selected="false">Semana</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#mes" type="button" role="tab" aria-controls="contact" aria-selected="false">Mes</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#anio" type="button" role="tab" aria-controls="contact" aria-selected="false">Año</button>
+            </li>
+          </ul>
+          <div class="tab-content " id="myTabContent">
+                              <!-- POGRESO DIA -->
+            <div class="tab-pane fondoSombreado fade show active" id="dia" role="tabpanel" aria-labelledby="home-tab">
+              
+              <div class="progress">
+                <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+              </div>
+              <div class="progress">
+                <div class="progress-bar bg-info progress-bar-striped" role="progressbar" style="width: 85%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">85%</div>
+              </div>
+              <div class="progress">
+                <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 15%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">15%</div>
+              </div>
+              <div class="progress">
+                <div class="progress-bar bg-warning progress-bar-striped" role="progressbar" style="width: 2%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">2%</div>
+              </div>
+              <div class="iconMore text-end">
+                <i class="fas fa-plus-circle"></i>
+              </div>
+            </div>
+                                    <!-- PROGRESO SEMANA -->
+            <div class="tab-pane fondoSombreado fade" id="semana" role="tabpanel" aria-labelledby="profile-tab">
+              <div class="progress">
+                <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+              </div>
+              <div class="progress">
+                <div class="progress-bar bg-info progress-bar-striped" role="progressbar" style="width: 85%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">85%</div>
+              </div>
+              <div class="progress">
+                <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 15%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">15%</div>
+              </div>
+              <div class="progress">
+                <div class="progress-bar bg-warning progress-bar-striped" role="progressbar" style="width: 2%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">2%</div>
+              </div>
+            </div>
+                                  <!-- PROGRESO MES -->
+            <div class="tab-pane fondoSombreado fade" id="mes" role="tabpanel" aria-labelledby="contact-tab">
+              <div class="progress">
+                <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+              </div>
+              <div class="progress">
+                <div class="progress-bar bg-info progress-bar-striped" role="progressbar" style="width: 85%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">85%</div>
+              </div>
+              <div class="progress">
+                <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 15%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">15%</div>
+              </div>
+              <div class="progress">
+                <div class="progress-bar bg-warning progress-bar-striped" role="progressbar" style="width: 2%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">2%</div>
+              </div>
+            </div>
+                                          <!-- PROGRESO AÑO -->
+            <div class="tab-pane fondoSombreado fade" id="anio" role="tabpanel" aria-labelledby="contact-tab">
+              <div class="progress">
+                <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+              </div>
+              <div class="progress">
+                <div class="progress-bar bg-info progress-bar-striped" role="progressbar" style="width: 85%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">85%</div>
+              </div>
+              <div class="progress">
+                <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 15%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">15%</div>
+              </div>
+              <div class="progress">
+                <div class="progress-bar bg-warning progress-bar-striped" role="progressbar" style="width: 2%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">2%</div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+    </div>
+    
+ 
+</body>
+</html>

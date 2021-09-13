@@ -1,0 +1,80 @@
+:root{
+    --background: #e0e5ec;
+    --gray: #797d7f;
+    --green: #4FAB72;
+    --greenSlider: #93D1A7;
+  }
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Oswald', sans-serif;
+}
+body{
+   
+    background-color: var(--background);
+}
+
+/* BARRA DE NAVEGACION */
+
+.navbar{
+    background-color: var(--green);
+}
+
+#offcanvasNavbar{
+    background-color: var(--greenSlider);
+}
+
+/* BALANCE Y DINERO */
+.fondoSuperior{
+    height: 40vh;
+    padding: 30px;
+    margin: 55px 5% 0px 5%;
+    background-color: var(--greenSlider);
+    border-radius: 0 0 10px 10px;
+}
+
+.tituloBalance{
+    font-size: 2rem;
+}
+
+.dineroDisponible{
+    font-size: 3rem;
+}
+
+/* CONTENIDO BALANCE */
+.contenidoHome{
+    height: 100vh;
+    padding: 30px;
+    margin: 0px 2% 0px 2%;
+    background-color: var(--background);
+    border-radius: 10px 10px 0 0;
+    box-shadow: 2px 2px 7px rgb(163, 177, 198), -2px -2px 7px rgb(163, 177, 198),
+  -8px -8px 50px rgb(255, 255, 255, 0.8), 3px 3px 25px rgb(0, 0, 0, 0.6 );
+
+}
+
+/* BARRAS DE PROGRESO */
+.contenidoHome .nav-link{
+    color: var(--green);
+}
+.progress{
+    margin-top: 10px;
+ margin-bottom: 2%;
+}
+
+.fondoSombreado{
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 9px 9px 10px rgb(163, 177, 198, 0.6), 
+  -9px -9px 16px rgb(255, 255, 255, 0.5);
+ }
+ 
+ /* ICONO AGREGAR CONTENIDO */
+ .fa-plus-circle{
+     font-size: 40px;
+     color: var(--green)
+ }
+
+ 
