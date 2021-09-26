@@ -1,173 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <script src="./js/main.js"></script> -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">  
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="./js/popper.min.js"></script>
-    <script src="./js/bootstrap.min.js  "></script>
-    <script src="https://kit.fontawesome.com/0b51214ed8.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/style.css">
-    <title>Smart Spending</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <script src="./js/main.js"></script> -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <script src="./js/popper.min.js"></script>
+  <script src="./js/bootstrap.min.js  "></script>
+  <script src="https://kit.fontawesome.com/0b51214ed8.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Smart Spending</title>
 </head>
+
 <body>
-                    <!-- BARRA DE NAVEGACION -->
-    <nav class="navbar navbar-light fixed-top">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Smart<img src="./media/logo.png" alt="" srcset="" width="25px">Spending</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-            <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Smart<img src="./media/logo.png" alt="" srcset="" width="25px">Spending</h5>
-              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Balance</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Todos los movimientos</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Descargar .PDF</a>
-                  </li>
-              </ul>
-            </div>
-          </div>
+  <!-- BARRA DE NAVEGACION -->
+  <nav class="navbar navbar-light fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Smart<img src="./media/logo.png" alt="" srcset="" width="25px">Spending</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+        aria-controls="offcanvasNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Smart<img src="./media/logo.png" alt="" srcset=""
+              width="25px">Spending</h5>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-      </nav>
-                        <!-- FONDO SUPERIOR -->
-    <div class="fondoSuperior">
-        <h5 class="tituloBalance text-center">BALANCE</h5>
-        <p class="dineroDisponible text-center">$10.000 <i class="fas fa-plus-circle addCircle"></i></p>
-        <div class="contenidoHome">
-          <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
-            <li class="nav-item" role="presentation">
-              <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#dia" type="button" role="tab" aria-controls="home" aria-selected="true">Día</button>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Balance</a>
             </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#semana" type="button" role="tab" aria-controls="profile" aria-selected="false">Semana</button>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Todos los movimientos</a>
             </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#mes" type="button" role="tab" aria-controls="contact" aria-selected="false">Mes</button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#anio" type="button" role="tab" aria-controls="contact" aria-selected="false">Año</button>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Descargar .PDF</a>
             </li>
           </ul>
-          <div class="tab-content " id="myTabContent">
-                              <!-- POGRESO DIA -->
-            <div class="tab-pane fondoSombreado fade show active" id="dia" role="tabpanel" aria-labelledby="home-tab">
-              <div class="date text-center">
-                <input type="date" id="fechaActual" value="" >
-              </div>
-              <div class="progress">
-                <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">ALIMENTOS</div>
-              </div>
-              <div class="progress">
-                <div class="progress-bar bg-info progress-bar-striped" role="progressbar" style="width: 85%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">VIVIENDA</div>
-              </div>
-              <div class="progress">
-                <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 15%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">MOVILIDAD</div>
-              </div>
-              <div class="progress">
-                <div class="progress-bar bg-warning progress-bar-striped" role="progressbar" style="width: 2%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">VARIOS</div>
-              </div>
-              <div class="iconMore text-end">
-                <i class="fas fa-plus-circle addCircle"></i>
-              </div>
-
-              <div class="movimientos">
-                <table class="table table table-success table-striped table-responsive">
-                  <thead>
-                    <tr>
-                      <th scope="col" class="hiddDate"></th>Fecha</th>
-                      <th scope="col">Rubro</th>
-                      <th scope="col">Importe</th>
-                      <th scope="col">Borrar</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row" class="hiddDate">10/10/2021</th>
-                      <td>Colectivo</td>
-                      <td>$1000</td>
-                      <td><i class="fas fa-trash-alt"></i></td>
-                    </tr>
-                    <tr>
-                      <th scope="row" class="hiddDate">10/10/2021</th>
-                      <td>Alquiler</td>
-                      <td>$200</td>
-                      <td><i class="fas fa-trash-alt"></i></td>
-                    
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-
-
-            </div>
-                                    <!-- PROGRESO SEMANA -->
-            <div class="tab-pane fondoSombreado fade" id="semana" role="tabpanel" aria-labelledby="profile-tab">
-              <div class="progress">
-                <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-              </div>
-              <div class="progress">
-                <div class="progress-bar bg-info progress-bar-striped" role="progressbar" style="width: 85%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">85%</div>
-              </div>
-              <div class="progress">
-                <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 15%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">15%</div>
-              </div>
-              <div class="progress">
-                <div class="progress-bar bg-warning progress-bar-striped" role="progressbar" style="width: 2%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">2%</div>
-              </div>
-            </div>
-                                  <!-- PROGRESO MES -->
-            <div class="tab-pane fondoSombreado fade" id="mes" role="tabpanel" aria-labelledby="contact-tab">
-              <div class="progress">
-                <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-              </div>
-              <div class="progress">
-                <div class="progress-bar bg-info progress-bar-striped" role="progressbar" style="width: 85%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">85%</div>
-              </div>
-              <div class="progress">
-                <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 15%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">15%</div>
-              </div>
-              <div class="progress">
-                <div class="progress-bar bg-warning progress-bar-striped" role="progressbar" style="width: 2%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">2%</div>
-              </div>
-            </div>
-                                          <!-- PROGRESO AÑO -->
-            <div class="tab-pane fondoSombreado fade" id="anio" role="tabpanel" aria-labelledby="contact-tab">
-              <div class="progress">
-                <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-              </div>
-              <div class="progress">
-                <div class="progress-bar bg-info progress-bar-striped" role="progressbar" style="width: 85%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">85%</div>
-              </div>
-              <div class="progress">
-                <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 15%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">15%</div>
-              </div>
-              <div class="progress">
-                <div class="progress-bar bg-warning progress-bar-striped" role="progressbar" style="width: 2%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">2%</div>
-              </div>
-            </div>
-          </div>
-          
         </div>
+      </div>
     </div>
+  </nav>
+  <!-- FONDO SUPERIOR -->
+  <div class="fondoSuperior">
+    <h5 class="tituloBalance text-center">BALANCE</h5>
+    <p class="dineroDisponible text-center">$<span id="dineroDisponible"></span><i class="fas fa-plus-circle addCircle"
+        onclick="" data-bs-toggle="modal" data-bs-target="#modalAgregarDinero"></i></p>
+    <div class="contenidoHome">
+      <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#dia" type="button"
+            role="tab" aria-controls="home" aria-selected="true">Día</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#semanas" type="button"
+            role="tab" aria-controls="profile" aria-selected="false">Semana</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#mes" type="button" role="tab"
+            aria-controls="contact" aria-selected="false">Mes</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#anio" type="button" role="tab"
+            aria-controls="contact" aria-selected="false">Año</button>
+        </li>
+      </ul>
+      <div class="tab-content " id="myTabContent">
+        <!-- POGRESO DIA -->
+        <div class="tab-pane fondoSombreado fade show active" id="dia" role="tabpanel" aria-labelledby="home-tab">
+          <div class="date text-center">
+            <input type="date" id="fechaActual" value="">
+          </div>
+          <div class="progress">
+            <div class="progress-bar bg-success progress-bar-striped" role="progressbar" aria-valuenow="25"
+              aria-valuemin="0" aria-valuemax="100" id="barComida">Comida</div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" " aria-valuenow=" 25"
+              aria-valuemin="0" aria-valuemax="100" id="barTransporte">Transporte</div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar bg-info progress-bar-striped" role="progressbar" " aria-valuenow=" 25"
+              aria-valuemin="0" aria-valuemax="100" id="barVivienda">Vivienda</div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar bg-warning progress-bar-striped" role="progressbar" " aria-valuenow=" 25"
+              aria-valuemin="0" aria-valuemax="100" id="barHobbies">Hobbies</div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" " aria-valuenow=" 25"
+              aria-valuemin="0" aria-valuemax="100" id="barServicios">Servicios</div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar bg-dark progress-bar-striped" role="progressbar" " aria-valuenow=" 25"
+              aria-valuemin="0" aria-valuemax="100" id="barVarios">Varios</div>
+          </div>
+          <div class="iconMore text-end">
+            <i class="fas fa-minus-circle minusCircle" onclick="" data-bs-toggle="modal"
+              data-bs-target="#modarAgregarEgreso"></i>
+
+          </div>
+
+          <div class="movimientos">
+            <table class="table table table-success table-striped table-responsive" id="tabla">
+              <thead>
+                <tr>
+                  <th scope="col" class="hiddDate"></th>Fecha</th>
+                  <th scope="col">Rubro</th>
+                  <th scope="col">Importe</th>
+                  <th scope="col">Borrar</th>
+                </tr>
+              </thead>
+              <tbody id="tablaDeMoviemientos">
+              </tbody>
+            </table>
+          </div>
+
+
+        </div>
+        <!-- PROGRESO SEMANA -->
+        <div class="tab-pane fondoSombreado fade" id="semanas" role="tabpanel" aria-labelledby="profile-tab">
+          <div class="progress">
+            <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: 25%;"
+              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar bg-info progress-bar-striped" role="progressbar" style="width: 85%;"
+              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">85%</div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 15%;"
+              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">15%</div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar bg-warning progress-bar-striped" role="progressbar" style="width: 2%;"
+              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">2%</div>
+          </div>
+        </div>
+        <!-- PROGRESO MES -->
+        <div class="tab-pane fondoSombreado fade" id="mes" role="tabpanel" aria-labelledby="contact-tab">
+          <div class="progress">
+            <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: 25%;"
+              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar bg-info progress-bar-striped" role="progressbar" style="width: 85%;"
+              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">85%</div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 15%;"
+              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">15%</div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar bg-warning progress-bar-striped" role="progressbar" style="width: 2%;"
+              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">2%</div>
+          </div>
+        </div>
+        <!-- PROGRESO AÑO -->
+        <div class="tab-pane fondoSombreado fade" id="anio" role="tabpanel" aria-labelledby="contact-tab">
+          <div class="progress">
+            <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: 25%;"
+              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar bg-info progress-bar-striped" role="progressbar" style="width: 85%;"
+              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">85%</div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 15%;"
+              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">15%</div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar bg-warning progress-bar-striped" role="progressbar" style="width: 2%;"
+              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">2%</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODAL AGREGAR DINERO -->
+  <div class="modal fade" id="modalAgregarDinero" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Nuevo Ingreso</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="input-group mb-3">
+            <span class="input-group-text">$</span>
+            <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" id="dineroAIngresar">
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Origen</span>
+            <input type="text" class="form-control" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default" id="conceptoDineroIngresar">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal"
+            onclick="agregarDinero()">Agregar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- MODAL QUITAR DINERO -->
+
+  <div class="modal fade" id="modarAgregarEgreso" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Nuevo Egreso</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="input-group mb-3">
+            <span class="input-group-text">$</span>
+            <input type="number" class="form-control" aria-label="Amount (to the nearest dollar)" id="montoAQuitar">
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Gasto</span>
+            <input type="text" class="form-control" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default" id="origenDelGasto">
+          </div>
+          <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect01">Rubro</label>
+            <select class="form-select" id="selectorDeRubros">
+              <option selected value="comida">Comida</option>
+              <option value="transporte">Transporte</option>
+              <option value="vivienda">Vivienda</option>
+              <option value="hobbies">Hobbies</option>
+              <option value="servicios">Servicios</option>
+              <option selected value="varios">Varios</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick="sacarDinero()">Agregar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/datos.js"></script>
   <script src="./js/functions.js"></script>
- <script src="./js/main.js"></script>
+  <script src="./js/main.js"></script>
 </body>
+
 </html>

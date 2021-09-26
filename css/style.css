@@ -3,6 +3,7 @@
   --gray: #797d7f;
   --green: #4fab72;
   --greenSlider: #93d1a7;
+  --red: #fc5151;
 }
 
 * {
@@ -75,9 +76,6 @@ body {
 }
 
 /* ICONO AGREGAR CONTENIDO */
-.addCircle {
-  color: yellow;
-}
 
 .addCircle {
   font-size: 40px;
@@ -96,6 +94,26 @@ body {
   -webkit-transform: rotate(90deg);
   cursor: pointer;
 }
+/* ICONO AGREGAR EGRESO */
+
+.minusCircle {
+  font-size: 40px;
+  color: var(--red);
+}
+
+
+
+.minusCircle:hover {
+  transition: 0.2s;
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  cursor: pointer;
+}
+
+
+
 
 @media (max-width: 400px) {
   .movimientos th {
@@ -104,4 +122,36 @@ body {
   .movimientos td {
     font-size: 15px;
   }
+}
+
+
+/* MARCA EN COLORES LA TABLA DEPENDIENDO SI ES UN INGRESO O UN EGRESO */
+#ingresoVerde{
+  
+  --bs-table-accent-bg: #caffbf !important;
+}
+#ingresoRojo {
+ 
+  --bs-table-accent-bg: #ffadad !important;
+}
+
+#barComida{
+  width: 90%;
+}
+
+#barTransporte{
+  width: 90%;
+}
+
+#barVivienda{
+  width: 90%;
+}
+#barHobbies{
+  width: 90%;
+}
+#barServicios{
+  width: 90%;
+}
+#barVarios{
+  width: 90%;
 }
