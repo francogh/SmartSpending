@@ -67,8 +67,8 @@ function actualizarDinero() {
       agregarATabla.innerHTML += `<tr id="ingresoRojo">
                                 <th scope="row" class="hiddDate">${inOutt[index].inOut}</th>
                                 <td>${inOutt[index].rubro}</td>
-                                <td>$ ${inOutt[index].importe}</td>
-                                <td><button type="button" class="btn btn-danger">
+                                <td>$ ${inOutt[index].importe}<span id="dispId">${inOutt[index].id}</span></td>
+                                <td><button type="button" class="btn btn-danger" id="borrarArray">
                                 <i class="fas fa-trash-alt" onclick="deleteRow(this)"></i>
                               </button></td>
                               </tr>`;
@@ -76,8 +76,8 @@ function actualizarDinero() {
       agregarATabla.innerHTML += `<tr id="ingresoVerde">
                                 <th scope="row" class="hiddDate">${inOutt[index].inOut}</th>
                                 <td>${inOutt[index].rubro}</td>
-                                <td>$ ${inOutt[index].importe}</td>
-                                <td><button type="button" class="btn btn-danger">
+                                <td>$ ${inOutt[index].importe}<span id="dispId">${inOutt[index].id}</span></td>
+                                <td><button type="button" class="btn btn-danger" id="borrarArray">
                                 <i class="fas fa-trash-alt" onclick="deleteRow(this)"></i>
                               </button></td>
                               </tr>`;
@@ -92,7 +92,7 @@ function nuevoMovimientoIngreso() {
     agregarATabla.innerHTML += `<tr id="ingresoVerde">
                                   <th scope="row" class="hiddDate">${inOutt[index].inOut}</th>
                                   <td>${inOutt[index].rubro}</td>
-                                  <td>$ ${inOutt[index].importe}</td>
+                                  <td>$ ${inOutt[index].importe}<span id="dispId">${inOutt[index].id}</span></td>
                                   <td><button type="button" class="btn btn-danger">
                                 <i class="fas fa-trash-alt" onclick="deleteRow(this)"></i>
                               </button></td>
@@ -106,7 +106,7 @@ function nuevoMovimientoIngresoSalida() {
     agregarATabla.innerHTML += `<tr id="ingresoRojo">
                                     <th scope="row" class="hiddDate">${inOutt[index].inOut}</th>
                                     <td>${inOutt[index].rubro}</td>
-                                    <td>$ ${inOutt[index].importe}</td>
+                                    <td>$ ${inOutt[index].importe}<span id="dispId">${inOutt[index].id}</span></td>
                                     <td><button type="button" class="btn btn-danger">
                                   <i class="fas fa-trash-alt" onclick="deleteRow(this)"></i>
                                 </button></td>
@@ -122,8 +122,7 @@ function deleteRow(btn) {
 function barradegastos() {
   let dineroSal = 0;
   let dineroEnt = 0;
-  let barraIngresos = 0;
-  let barraEgresos = 0;
+ 
 
   for (let index = 0; index < inOutt.length; index++) {
     if (inOutt[index].trans === "E") {
@@ -169,7 +168,7 @@ function progresoGastos() {
     hobbiesBarra +
     serviciosBarra +
     variosBarra;
-    console.log(gastosTotales);
+    
   comidaBarra = parseInt((comidaBarra * 100) / gastosTotales);
   transporteBarra = parseInt((transporteBarra * 100) / gastosTotales);
   viviendaBarra = parseInt((viviendaBarra * 100) / gastosTotales);
@@ -207,15 +206,29 @@ let saldoAcumulado = 0;
 barradegastos();
 progresoGastos();
 
-function agregarDinero() {
-  addIn();
-  nuevoMovimientoIngreso();
-  //agregar el movimiento a la tabla
-  progresoGastos();
+let botonAgregar = document.getElementById('btnAgregarDinero');
+botonAgregar.onclick = () => {
+  
+    addIn();
+    nuevoMovimientoIngreso();
+    //agregar el movimiento a la tabla
+    progresoGastos();
+  
 }
 
-function sacarDinero() {
+
+let botonQuitar = document.getElementById('btnAgregarEgreso')
+botonQuitar.onclick = () => {
   addOut();
   nuevoMovimientoIngresoSalida();
   progresoGastos();
+}
+
+
+let borrar = document.getElementById('borrarArray');
+borrar.addEventListener('click', validarr)
+
+function validarr(e){
+let formu = e.target;
+console.log(formu[1]);
 }
