@@ -196,6 +196,64 @@ function progresoGastos() {
   barVarios.style.width = variosBarra + "%";
 }
 
+function cambiarColorFondoRed(){
+  document.getElementById('navbarColor').style.background = '#e76f51'; 
+  document.getElementById('offcanvasNavbar').style.background = '#f4a261'; 
+  document.getElementById('fondoSuperior').style.background = '#f4a261';
+  
+}
+function cambiarColorFondoBlue(){
+  document.getElementById('navbarColor').style.background = '#219ebc'; 
+  document.getElementById('offcanvasNavbar').style.background = '#8ecae6'; 
+  document.getElementById('fondoSuperior').style.background = '#8ecae6';
+  
+}
+function cambiarColorFondoYelow(){
+  document.getElementById('navbarColor').style.background = '#f77f00'; 
+  document.getElementById('offcanvasNavbar').style.background = '#fcbf49'; 
+  document.getElementById('fondoSuperior').style.background = '#fcbf49';
+  
+}
+function cambiarColorFondoOriginal(){
+  document.getElementById('navbarColor').style.background = '#3f37c9'; 
+  document.getElementById('offcanvasNavbar').style.background = '#5390d9'; 
+  document.getElementById('fondoSuperior').style.background = '#5390d9';
+  
+}
+function cambiarColorFondoGreen(){
+  document.getElementById('navbarColor').style.background = '#4fab72'; 
+  document.getElementById('offcanvasNavbar').style.background = '#93d1a7'; 
+  document.getElementById('fondoSuperior').style.background = '#93d1a7';
+  
+}
+
+let colorRed = document.getElementById('botonRed');
+colorRed.onclick = () => {
+  cambiarColorFondoRed()
+  localStorage.setItem('estado', 1);
+}
+let colorBlue = document.getElementById('botonBlue');
+colorBlue.onclick = () => {
+  cambiarColorFondoBlue()
+  localStorage.setItem('estado', 0);
+}
+let colorYelow = document.getElementById('botonYelow');
+colorYelow.onclick = () => {
+  cambiarColorFondoYelow()
+  localStorage.setItem('estado', 2);
+}
+let colorOriginal = document.getElementById('botonOriginal');
+colorOriginal.onclick = () => {
+  cambiarColorFondoOriginal()
+  localStorage.setItem('estado', 3);
+}
+
+let colorGreen = document.getElementById('botonGreen');
+colorGreen.onclick = () => {
+  cambiarColorFondoGreen()
+  localStorage.setItem('estado', 4);
+}
+
 function borrarObjeto(i) {
   let obj = i;
   console.log(inOutt.obj);
@@ -232,3 +290,20 @@ function validarr(e){
 let formu = e.target;
 console.log(formu[1]);
 }
+
+
+
+miStorage = window.localStorage;
+let estado = localStorage.getItem('estado');
+
+
+if(estado==1)
+cambiarColorFondoRed();
+else if(estado==0)
+cambiarColorFondoBlue()
+else if(estado==2)
+cambiarColorFondoYelow()
+else if(estado==3)
+cambiarColorFondoOriginal()
+else if(estado==4)
+cambiarColorFondoGreen()

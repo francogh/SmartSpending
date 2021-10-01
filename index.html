@@ -23,7 +23,7 @@
 
 <body>
   <!-- BARRA DE NAVEGACION -->
-  <nav class="navbar navbar-light fixed-top">
+  <nav class="navbar navbar-light fixed-top" id="navbarColor">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Smart<img src="./media/logo.png" alt="" srcset="" width="25px">Spending</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
@@ -47,13 +47,21 @@
             <li class="nav-item">
               <a class="nav-link" href="#">Descargar .PDF</a>
             </li>
+            <li class="nav-item">
+              <p class="colorLetras">Cambiar Colores</p>
+              <button type="button" class="btn botonDosColoresRed" id="botonRed"></button>
+              <button type="button" class="btn botonDosColoresBlue" id="botonBlue"></button>
+              <button type="button" class="btn botonDosColoresYelow" id="botonYelow"></button>
+              <button type="button" class="btn botonDosColoresOriginal" id="botonOriginal"></button>
+              <button type="button" class="btn botonDosColorGreen" id="botonGreen"></button>
+            </li>
           </ul>
         </div>
       </div>
     </div>
   </nav>
   <!-- FONDO SUPERIOR -->
-  <div class="fondoSuperior">
+  <div class="fondoSuperior" id="fondoSuperior">
     <h5 class="tituloBalance text-center">BALANCE</h5>
     <p class="dineroDisponible text-center">$<span id="dineroDisponible"></span><i class="fas fa-plus-circle addCircle"
        data-bs-toggle="modal" data-bs-target="#modalAgregarDinero"></i></p>
