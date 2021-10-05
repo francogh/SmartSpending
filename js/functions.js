@@ -12,6 +12,10 @@ window.onload = function () {
   document.getElementById("fechaActual").value = ano + "-" + mes + "-" + dia;
 };
 
+
+
+
+// EN ESTA FUNCION AGREGO UN UBJETO AL ARRAY SUMO EL IMPORTE AL TOTAL
 const addIn = () => {
   let adddate = document.getElementById("fechaActual").value;
   let rubro = document.getElementById("conceptoDineroIngresar").value;
@@ -22,7 +26,7 @@ const addIn = () => {
   inOutt.push({
     id: id,
     inOut: adddate,
-    rubro: rubro,
+    rubro: rubro, 
     importe: importe,
     trans: trans,
     tipo: tipo,
@@ -34,8 +38,10 @@ const addIn = () => {
   dinero.innerHTML = saldoAcumulado;
   document.getElementById("conceptoDineroIngresar").value = "";
   document.getElementById("dineroAIngresar").value = "";
+  guardarLocal('movimientos', JSON.stringify(inOutt));
 };
 
+//AGREGO UN MOVIMIENTO DE GASTO AL ARRAY Y RESTO EL DINERO AL TOTAL
 const addOut = () => {
   let adddate = document.getElementById("fechaActual").value;
   let rubro = document.getElementById("origenDelGasto").value;
@@ -58,8 +64,11 @@ const addOut = () => {
   dinero.innerHTML = saldoAcumulado;
   document.getElementById("origenDelGasto").value = "";
   document.getElementById("montoAQuitar").value = "";
+  guardarLocal('movimientos', JSON.stringify(inOutt));
+  progresoGastos();
 };
 
+//TOMA TODOS LOS MOVIMIENTOS DEL ARRAY Y LOS AGREGA A LA TABLA
 function actualizarDinero() {
   for (let index = 0; index < inOutt.length; index++) {
     let agregarATabla = document.getElementById("tablaDeMoviemientos");
@@ -67,24 +76,25 @@ function actualizarDinero() {
       agregarATabla.innerHTML += `<tr id="ingresoRojo">
                                 <th scope="row" class="hiddDate">${inOutt[index].inOut}</th>
                                 <td>${inOutt[index].rubro}</td>
-                                <td>$ ${inOutt[index].importe}<span id="dispId">${inOutt[index].id}</span></td>
-                                <td><button type="button" class="btn btn-danger" id="borrarArray">
-                                <i class="fas fa-trash-alt" onclick="deleteRow(this)"></i>
+                                <td>$ ${inOutt[index].importe}</td>
+                                <td><button type="button" class="btn btn-danger" id="${inOutt[index].id}" onclick="deleteRow(this)">
+                                X
                               </button></td>
                               </tr>`;
     } else {
       agregarATabla.innerHTML += `<tr id="ingresoVerde">
                                 <th scope="row" class="hiddDate">${inOutt[index].inOut}</th>
                                 <td>${inOutt[index].rubro}</td>
-                                <td>$ ${inOutt[index].importe}<span id="dispId">${inOutt[index].id}</span></td>
-                                <td><button type="button" class="btn btn-danger" id="borrarArray">
-                                <i class="fas fa-trash-alt" onclick="deleteRow(this)"></i>
+                                <td>$ ${inOutt[index].importe}</td>
+                                <td><button type="button" class="btn btn-danger" id="${inOutt[index].id}" onclick="deleteRow(this)">
+                                X
                               </button></td>
                               </tr>`;
     }
   }
 }
 
+//AGREGA EL INGRESO DE DINERO A LA TABLA CUANDO AGREGAMOS UN MOVIMIENTO NUEVO
 function nuevoMovimientoIngreso() {
   for (let index = inOutt.length - 1; index < inOutt.length; index++) {
     let agregarATabla = document.getElementById("tablaDeMoviemientos");
@@ -92,13 +102,14 @@ function nuevoMovimientoIngreso() {
     agregarATabla.innerHTML += `<tr id="ingresoVerde">
                                   <th scope="row" class="hiddDate">${inOutt[index].inOut}</th>
                                   <td>${inOutt[index].rubro}</td>
-                                  <td>$ ${inOutt[index].importe}<span id="dispId">${inOutt[index].id}</span></td>
-                                  <td><button type="button" class="btn btn-danger">
-                                <i class="fas fa-trash-alt" onclick="deleteRow(this)"></i>
-                              </button></td>
-                                </tr>`;
+                                  <td>$ ${inOutt[index].importe}</td>
+                                  <td><button type="button" class="btn btn-danger" id="${inOutt[index].id}" onclick="deleteRow(this)">
+                                  X
+                                  </button></td>
+                                  </tr>`;
   }
 }
+//AGREGA UN MOVIMIENTO GASTO A LA TABLA Y AL ARRAY
 function nuevoMovimientoIngresoSalida() {
   for (let index = inOutt.length - 1; index < inOutt.length; index++) {
     let agregarATabla = document.getElementById("tablaDeMoviemientos");
@@ -106,19 +117,44 @@ function nuevoMovimientoIngresoSalida() {
     agregarATabla.innerHTML += `<tr id="ingresoRojo">
                                     <th scope="row" class="hiddDate">${inOutt[index].inOut}</th>
                                     <td>${inOutt[index].rubro}</td>
-                                    <td>$ ${inOutt[index].importe}<span id="dispId">${inOutt[index].id}</span></td>
-                                    <td><button type="button" class="btn btn-danger">
-                                  <i class="fas fa-trash-alt" onclick="deleteRow(this)"></i>
-                                </button></td>
-                                  </tr>`;
+                                    <td>$ ${inOutt[index].importe}</td>
+                                    <td><button type="button" class="btn btn-danger" id="${inOutt[index].id}" onclick="deleteRow(this)">
+                                    X
+                                    </button></td>
+                                    </tr>`;
   }
 }
 
+//BORRA FILA DE LA TABLA
 function deleteRow(btn) {
-  var row = btn.parentNode.parentNode.parentNode;
+  var row = btn.parentNode.parentNode;
   row.parentNode.removeChild(row);
+  let ver = btn.id
+  let probar  = inOutt.filter(inOutt => inOutt.id == ver);
+  console.log(probar[0].id);
+  
+  
+  for (let index = 0; index < inOutt.length; index++){
+    if(inOutt[index].id === probar[0].id ){
+        inOutt.splice(inOutt[index], 1);
+        // console.log(inOutt[index].id);
+        // console.log(inOutt[index]);
+    }
+  }
+  console.log(inOutt);
+  
 }
 
+
+
+
+
+
+
+
+
+
+//ACTUALIZA LA BARRA DE GASTOS A MEDIDA QUE VAMOS HACIENDO MOVIIENTOS
 function barradegastos() {
   let dineroSal = 0;
   let dineroEnt = 0;
@@ -138,13 +174,15 @@ function barradegastos() {
   dinero.innerHTML = saldoAcumulado;
 }
 
-let comidaBarra = 0;
+
+
+function progresoGastos() {
+  let comidaBarra = 0;
 let transporteBarra = 0;
 let viviendaBarra = 0;
 let hobbiesBarra = 0;
 let serviciosBarra = 0;
 let variosBarra = 0;
-function progresoGastos() {
   for (let index = 0; index < inOutt.length; index++) {
     if (inOutt[index].tipo === "comida") {
       comidaBarra += inOutt[index].importe;
@@ -196,6 +234,7 @@ function progresoGastos() {
   barVarios.style.width = variosBarra + "%";
 }
 
+//CAMBIA LOS FONDOS DEL CSS
 function cambiarColorFondoRed(){
   document.getElementById('navbarColor').style.background = '#e76f51'; 
   document.getElementById('offcanvasNavbar').style.background = '#f4a261'; 
@@ -254,49 +293,14 @@ colorGreen.onclick = () => {
   localStorage.setItem('estado', 4);
 }
 
-function borrarObjeto(i) {
-  let obj = i;
-  console.log(inOutt.obj);
-}
-
-actualizarDinero();
-let saldoAcumulado = 0;
-barradegastos();
-progresoGastos();
-
-let botonAgregar = document.getElementById('btnAgregarDinero');
-botonAgregar.onclick = () => {
-  
-    addIn();
-    nuevoMovimientoIngreso();
-    //agregar el movimiento a la tabla
-    progresoGastos();
-  
-}
-
-
-let botonQuitar = document.getElementById('btnAgregarEgreso')
-botonQuitar.onclick = () => {
-  addOut();
-  nuevoMovimientoIngresoSalida();
-  progresoGastos();
-}
-
-
-let borrar = document.getElementById('borrarArray');
-borrar.addEventListener('click', validarr)
-
-function validarr(e){
-let formu = e.target;
-console.log(formu[1]);
-}
 
 
 
+//AGREGA AL LOCALSTORAGE EL COLOR
 miStorage = window.localStorage;
 let estado = localStorage.getItem('estado');
 
-
+//PREGUNTA DE QUE COLOR ESTA GUARDADO EN EL LS
 if(estado==1)
 cambiarColorFondoRed();
 else if(estado==0)
