@@ -53,7 +53,7 @@ body {
 
 /* CONTENIDO BALANCE */
 .contenidoHome {
-  height: 100vh;
+  
   padding: 10px;
   margin: 0px 2px 0px 2px;
   background-color: var(--background);
@@ -96,14 +96,13 @@ body {
   -o-transform: rotate(90deg);
   -webkit-transform: rotate(90deg);
   cursor: pointer;
-}
-/* ICONO AGREGAR EGRESO */
+} 
+/* ICONO AGREGAR EGRESO*/
 
 .minusCircle {
   font-size: 40px;
   color: var(--red);
 }
-
 
 
 .minusCircle:hover {
@@ -138,26 +137,7 @@ body {
   --bs-table-accent-bg: #ffadad !important;
 }
 
-#barComida{
 
-}
-
-#barTransporte{
-
-}
-
-#barVivienda{
-
-}
-#barHobbies{
-
-}
-#barServicios{
-
-}
-#barVarios{
-
-}
 
 #dispId{
   display: none;

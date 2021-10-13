@@ -36,6 +36,7 @@ const addIn = () => {
   let dinero = document.getElementById("dineroDisponible");
 
   dinero.innerHTML = saldoAcumulado;
+
   document.getElementById("conceptoDineroIngresar").value = "";
   document.getElementById("dineroAIngresar").value = "";
   guardarLocal('movimientos', JSON.stringify(inOutt));
@@ -71,25 +72,25 @@ const addOut = () => {
 //TOMA TODOS LOS MOVIMIENTOS DEL ARRAY Y LOS AGREGA A LA TABLA
 function actualizarDinero() {
   for (let index = 0; index < inOutt.length; index++) {
-    let agregarATabla = document.getElementById("tablaDeMoviemientos");
+    // let agregarATabla = document.getElementById("tablaDeMoviemientos");
     if (inOutt[index].trans === "E") {
-      agregarATabla.innerHTML += `<tr id="ingresoRojo">
+      $('#tablaDeMoviemientos').prepend (`<tr id="ingresoRojo">
                                 <th scope="row" class="hiddDate">${inOutt[index].inOut}</th>
                                 <td>${inOutt[index].rubro}</td>
                                 <td>$ ${inOutt[index].importe}</td>
                                 <td><button type="button" class="btn btn-danger" id="${inOutt[index].id}" onclick="deleteRow(this)">
                                 X
                               </button></td>
-                              </tr>`;
+                              </tr>`);
     } else {
-      agregarATabla.innerHTML += `<tr id="ingresoVerde">
+      $('#tablaDeMoviemientos').prepend (`<tr id="ingresoVerde">
                                 <th scope="row" class="hiddDate">${inOutt[index].inOut}</th>
                                 <td>${inOutt[index].rubro}</td>
                                 <td>$ ${inOutt[index].importe}</td>
                                 <td><button type="button" class="btn btn-danger" id="${inOutt[index].id}" onclick="deleteRow(this)">
                                 X
                               </button></td>
-                              </tr>`;
+                              </tr>`);
     }
   }
 }
@@ -97,16 +98,16 @@ function actualizarDinero() {
 //AGREGA EL INGRESO DE DINERO A LA TABLA CUANDO AGREGAMOS UN MOVIMIENTO NUEVO
 function nuevoMovimientoIngreso() {
   for (let index = inOutt.length - 1; index < inOutt.length; index++) {
-    let agregarATabla = document.getElementById("tablaDeMoviemientos");
+  
 
-    agregarATabla.innerHTML += `<tr id="ingresoVerde">
+    $('#tablaDeMoviemientos').prepend (`<tr id="ingresoVerde">
                                   <th scope="row" class="hiddDate">${inOutt[index].inOut}</th>
                                   <td>${inOutt[index].rubro}</td>
                                   <td>$ ${inOutt[index].importe}</td>
                                   <td><button type="button" class="btn btn-danger" id="${inOutt[index].id}" onclick="deleteRow(this)">
                                   X
                                   </button></td>
-                                  </tr>`;
+                                  </tr>`);
   }
 }
 //AGREGA UN MOVIMIENTO GASTO A LA TABLA Y AL ARRAY
@@ -114,14 +115,14 @@ function nuevoMovimientoIngresoSalida() {
   for (let index = inOutt.length - 1; index < inOutt.length; index++) {
     let agregarATabla = document.getElementById("tablaDeMoviemientos");
 
-    agregarATabla.innerHTML += `<tr id="ingresoRojo">
+    $('#tablaDeMoviemientos').prepend (`<tr id="ingresoRojo">
                                     <th scope="row" class="hiddDate">${inOutt[index].inOut}</th>
                                     <td>${inOutt[index].rubro}</td>
                                     <td>$ ${inOutt[index].importe}</td>
                                     <td><button type="button" class="btn btn-danger" id="${inOutt[index].id}" onclick="deleteRow(this)">
                                     X
                                     </button></td>
-                                    </tr>`;
+                                    </tr>`);
   }
 }
 
@@ -171,7 +172,7 @@ function barradegastos() {
   saldoAcumulado = dineroEnt - dineroSal;
 
   let dinero = document.getElementById("dineroDisponible");
-  dinero.innerHTML = saldoAcumulado;
+  dinero.innerHTML = new Intl.NumberFormat("de-DE").format(saldoAcumulado);
 }
 
 
@@ -215,83 +216,78 @@ let variosBarra = 0;
   variosBarra = parseInt((variosBarra * 100) / gastosTotales);
   
 
-  let barComida = document.getElementById("barComida");
-  barComida.style.width = comidaBarra + "%";
+  // let barComida = document.getElementById("barComida");
+  $('#barComida').css ('width', comidaBarra + "%");
 
-  let barTransporte = document.getElementById("barTransporte");
-  barTransporte.style.width = transporteBarra + "%";
+  $('#barTransporte').css ('width', transporteBarra + "%");
+  
+  $('#barVivienda').css ('width', viviendaBarra + "%");
 
-  let barVivienda = document.getElementById("barVivienda");
-  barVivienda.style.width = viviendaBarra + "%";
+  $('#barHobbies').css ('width', hobbiesBarra + "%");
 
-  let barHobbies = document.getElementById("barHobbies");
-  barHobbies.style.width = hobbiesBarra + "%";
-
-  let barServicios = document.getElementById("barServicios");
-  barServicios.style.width = serviciosBarra + "%";
-
-  let barVarios = document.getElementById("barVarios");
-  barVarios.style.width = variosBarra + "%";
+  $('#barServicios').css ('width', serviciosBarra + "%");
+  
+  $('#barVarios').css ('width', variosBarra + "%");
+ 
 }
 
 //CAMBIA LOS FONDOS DEL CSS
 function cambiarColorFondoRed(){
-  document.getElementById('navbarColor').style.background = '#e76f51'; 
-  document.getElementById('offcanvasNavbar').style.background = '#f4a261'; 
-  document.getElementById('fondoSuperior').style.background = '#f4a261';
+  $('#navbarColor').css("background-color", "#e76f51");
+  $('#offcanvasNavbar').css("background-color", "#f4a261");
+  $('#fondoSuperior').css("background-color", "#f4a261");
   
 }
 function cambiarColorFondoBlue(){
-  document.getElementById('navbarColor').style.background = '#219ebc'; 
-  document.getElementById('offcanvasNavbar').style.background = '#8ecae6'; 
-  document.getElementById('fondoSuperior').style.background = '#8ecae6';
+  $('#navbarColor').css("background-color", '#219ebc');
+  $('#offcanvasNavbar').css("background-color", '#8ecae6');
+  $('#fondoSuperior').css("background-color", '#8ecae6');
   
 }
 function cambiarColorFondoYelow(){
-  document.getElementById('navbarColor').style.background = '#f77f00'; 
-  document.getElementById('offcanvasNavbar').style.background = '#fcbf49'; 
-  document.getElementById('fondoSuperior').style.background = '#fcbf49';
+  $('#navbarColor').css("background-color", '#f77f00');
+  $('#offcanvasNavbar').css("background-color", '#fcbf49');
+  $('#fondoSuperior').css("background-color", '#fcbf49');
+
   
 }
 function cambiarColorFondoOriginal(){
-  document.getElementById('navbarColor').style.background = '#3f37c9'; 
-  document.getElementById('offcanvasNavbar').style.background = '#5390d9'; 
-  document.getElementById('fondoSuperior').style.background = '#5390d9';
+  $('#navbarColor').css("background-color", '#3f37c9');
+  $('#offcanvasNavbar').css("background-color", '#5390d9');
+  $('#fondoSuperior').css("background-color", '#5390d9');
   
 }
 function cambiarColorFondoGreen(){
-  document.getElementById('navbarColor').style.background = '#4fab72'; 
-  document.getElementById('offcanvasNavbar').style.background = '#93d1a7'; 
-  document.getElementById('fondoSuperior').style.background = '#93d1a7';
+  $('#navbarColor').css("background-color", '#4fab72');
+  $('#offcanvasNavbar').css("background-color", '#93d1a7');
+  $('#fondoSuperior').css("background-color", '#93d1a7');
+
   
 }
-
-let colorRed = document.getElementById('botonRed');
-colorRed.onclick = () => {
+$('#botonRed').click(function() {
   cambiarColorFondoRed()
   localStorage.setItem('estado', 1);
-}
-let colorBlue = document.getElementById('botonBlue');
-colorBlue.onclick = () => {
+})
+
+$('#botonBlue').click(function() {
   cambiarColorFondoBlue()
   localStorage.setItem('estado', 0);
-}
-let colorYelow = document.getElementById('botonYelow');
-colorYelow.onclick = () => {
+})
+
+$('#botonYelow').click(function() {
   cambiarColorFondoYelow()
   localStorage.setItem('estado', 2);
-}
-let colorOriginal = document.getElementById('botonOriginal');
-colorOriginal.onclick = () => {
+})
+
+$('#botonOriginal').click(function() {
   cambiarColorFondoOriginal()
   localStorage.setItem('estado', 3);
-}
+})
 
-let colorGreen = document.getElementById('botonGreen');
-colorGreen.onclick = () => {
+$('#botonGreen').click(function() {
   cambiarColorFondoGreen()
   localStorage.setItem('estado', 4);
-}
+})
 
 
 
@@ -311,3 +307,8 @@ else if(estado==3)
 cambiarColorFondoOriginal()
 else if(estado==4)
 cambiarColorFondoGreen()
+
+
+
+
+

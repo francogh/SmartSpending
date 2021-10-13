@@ -14,26 +14,23 @@ let saldoAcumulado = 0;
 barradegastos();
 progresoGastos();
 
-let botonAgregar = document.getElementById('btnAgregarDinero');
-botonAgregar.onclick = () => {
-  
-    addIn();
+
+
+$('#btnAgregarDinero').on('click', () => {
+  addIn();
     nuevoMovimientoIngreso();
     //agregar el movimiento a la tabla
     
     barradegastos()
-    
-  
-}
+})
 
 
-let botonQuitar = document.getElementById('btnAgregarEgreso')
-botonQuitar.onclick = () => {
+$('#btnAgregarEgreso').on('click', () => { 
   addOut();
   nuevoMovimientoIngresoSalida();
   progresoGastos();
   barradegastos()
-}
+})
 
 
   
