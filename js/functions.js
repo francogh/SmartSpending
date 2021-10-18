@@ -310,5 +310,60 @@ cambiarColorFondoGreen()
 
 
 
+///ENTREGABLE AJAX
 
 
+const EJEMPLO = 'https://jsonplaceholder.typicode.com/todos';
+
+
+$('.ajaxEjemplo').append('<button id="btn1">Historial</button>');
+
+$('#btn1').click(() => { 
+    $.get(EJEMPLO, function (resp,estado, state) {
+          if(state.status === 200){
+            let misDatos = resp;
+            for (const dato of misDatos) {
+              $(".ajaxEjemplo").append(`<tr id="ingresoVerde">
+              <th scope="row" class="hiddDate">${dato.id}</th>
+              <td>${dato.title}</td>
+              <td>${dato.completed}</td>
+            </tr>`);
+            }  
+          }else console.log('error');
+    });
+});
+
+
+const infoPost =  { id: "1", inOutt: "1", title: "et porro tempora" , completed: "true"}
+//Agregamos un botón con jQuery
+$('.ajaxEjemplo').append('<button id="btn2">Agregar</button>');
+//Escuchamos el evento click del botón agregado
+$("#btn2").click(() => { 
+    $.post(EJEMPLO, infoPost ,(resp, estado, state) => {
+        if(estado === 'success'){
+            $(".ajaxEjemplo").prepend(`<div>
+Titulo Agregado: ${resp.title}
+</div>`);
+        }  else{
+          $(".ajaxEjemplo").prepend(`<div>
+Titulo No agregado
+</div>`);
+        }
+    });
+});
+
+
+
+
+const PERSHP = 'https://hp-api.herokuapp.com/api/characters';
+
+
+$('.ajaxEjemplo').append('<button id="btn3">Agregar Harry Potter</button>');
+
+$('#btn3').click(() => { 
+    $.get(PERSHP, function (resp,estado, state) {
+console.log(resp[0].image);
+          $(".ajaxEjemplo").append(`<div> </div></dic> <img src="${resp[0].image}" alt=""> </div>`);
+        });
+     
+});
