@@ -53,7 +53,6 @@ body {
 
 /* CONTENIDO BALANCE */
 .contenidoHome {
-  
   padding: 10px;
   margin: 0px 2px 0px 2px;
   background-color: var(--background);
@@ -172,3 +171,4 @@ COLORES DE LOS BOTONES PARA CAMBIAR DE COLOR BG */
   border-left: 30px solid #4fab72;
   height: 40px;
 }
+
