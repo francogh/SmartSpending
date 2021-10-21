@@ -310,60 +310,98 @@ cambiarColorFondoGreen()
 
 
 
-///ENTREGABLE AJAX
-
-
-const EJEMPLO = 'https://jsonplaceholder.typicode.com/todos';
-
-
-$('.ajaxEjemplo').append('<button id="btn1">Historial</button>');
-
-$('#btn1').click(() => { 
-    $.get(EJEMPLO, function (resp,estado, state) {
-          if(state.status === 200){
-            let misDatos = resp;
-            for (const dato of misDatos) {
-              $(".ajaxEjemplo").append(`<tr id="ingresoVerde">
-              <th scope="row" class="hiddDate">${dato.id}</th>
-              <td>${dato.title}</td>
-              <td>${dato.completed}</td>
-            </tr>`);
-            }  
-          }else console.log('error');
-    });
-});
-
-
-const infoPost =  { id: "1", inOutt: "1", title: "et porro tempora" , completed: "true"}
-//Agregamos un botón con jQuery
-$('.ajaxEjemplo').append('<button id="btn2">Agregar</button>');
-//Escuchamos el evento click del botón agregado
-$("#btn2").click(() => { 
-    $.post(EJEMPLO, infoPost ,(resp, estado, state) => {
-        if(estado === 'success'){
-            $(".ajaxEjemplo").prepend(`<div>
-Titulo Agregado: ${resp.title}
-</div>`);
-        }  else{
-          $(".ajaxEjemplo").prepend(`<div>
-Titulo No agregado
-</div>`);
-        }
-    });
-});
-
-
-
-
-const PERSHP = 'https://hp-api.herokuapp.com/api/characters';
-
-
-$('.ajaxEjemplo').append('<button id="btn3">Agregar Harry Potter</button>');
-
-$('#btn3').click(() => { 
-    $.get(PERSHP, function (resp,estado, state) {
-console.log(resp[0].image);
-          $(".ajaxEjemplo").append(`<div> </div></dic> <img src="${resp[0].image}" alt=""> </div>`);
-        });
+$('#pdf').click(function() {
+  var doc = new jsPDF();
+  let alto = 40;
+  doc.setFontSize(30);
+  doc.setFontType("bold");
+  doc.setTextColor(147,209,167)
+  doc.text(60, 20 , 'Smart Spending');
+  
+  
+    for (let index = 0; index < inOutt.length; index++) {
+    
+    
+      
+      doc.setFontSize(12);
+      doc.setTextColor(0,0,0);
+      doc.setFont("courier");
+      let fecha = inOutt[index].inOut;
+      let rubro = inOutt[index].rubro;
+      let importe = new Intl.NumberFormat("de-DE").format(inOutt[index].importe);
+        
+  
+      doc.text(20, alto , fecha+ "   " + rubro+"   "+"$"+importe);
+      alto = alto + 10;
+      
+      
      
-});
+    }
+ 
+  
+  
+  doc.save('SmartSpending.pdf');
+	
+
+	
+})
+
+
+
+// ///ENTREGABLE AJAX
+
+
+// const EJEMPLO = 'https://jsonplaceholder.typicode.com/todos';
+
+
+// $('.ajaxEjemplo').append('<button id="btn1">Historial</button>');
+
+// $('#btn1').click(() => { 
+//     $.get(EJEMPLO, function (resp,estado, state) {
+//           if(state.status === 200){
+//             let misDatos = resp;
+//             for (const dato of misDatos) {
+//               $(".ajaxEjemplo").append(`<tr id="ingresoVerde">
+//               <th scope="row" class="hiddDate">${dato.id}</th>
+//               <td>${dato.title}</td>
+//               <td>${dato.completed}</td>
+//             </tr>`);
+//             }  
+//           }else console.log('error');
+//     });
+// });
+
+
+// const infoPost =  { id: "1", inOutt: "1", title: "et porro tempora" , completed: "true"}
+// //Agregamos un botón con jQuery
+// $('.ajaxEjemplo').append('<button id="btn2">Agregar</button>');
+// //Escuchamos el evento click del botón agregado
+// $("#btn2").click(() => { 
+//     $.post(EJEMPLO, infoPost ,(resp, estado, state) => {
+//         if(estado === 'success'){
+//             $(".ajaxEjemplo").prepend(`<div>
+// Titulo Agregado: ${resp.title}
+// </div>`);
+//         }  else{
+//           $(".ajaxEjemplo").prepend(`<div>
+// Titulo No agregado
+// </div>`);
+//         }
+//     });
+// });
+
+
+
+
+// const PERSHP = 'https://hp-api.herokuapp.com/api/characters';
+
+
+// $('.ajaxEjemplo').append('<button id="btn3">Agregar Harry Potter</button>');
+
+// $('#btn3').click(() => { 
+//     $.get(PERSHP, function (resp,estado, state) {
+// console.log(resp[0].image);
+//           $(".ajaxEjemplo").append(`<div> </div></dic> <img src="${resp[0].image}" alt=""> </div>`);
+//         });
+     
+// });

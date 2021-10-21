@@ -33,23 +33,24 @@ $('#btnAgregarEgreso').on('click', () => {
 })
 
 
+
   //
-$("#animacionesCombinadas").prepend('<button id="btn1">Arriba</button>');+
-$("#animacionesCombinadas").prepend('<button id="btn2">Abajo</button>');
-$("#animacionesCombinadas").prepend('<button id="btn3">Arriba/Abajo</button>');
-$("#animacionesCombinadas").prepend('<div style="background-color: yellow; height: 50vh; width: 100%" id="div"></div>')
+// $("#animacionesCombinadas").prepend('<button id="btn1">Arriba</button>');+
+// $("#animacionesCombinadas").prepend('<button id="btn2">Abajo</button>');
+// $("#animacionesCombinadas").prepend('<button id="btn3">Arriba/Abajo</button>');
+// $("#animacionesCombinadas").prepend('<div style="background-color: yellow; height: 50vh; width: 100%" id="div"></div>')
 
-$('#btn1').click(() => {
-    $('#div').slideUp('slow');
-})
+// $('#btn1').click(() => {
+//     $('#div').slideUp('slow');
+// })
 
-$('#btn2').click(() => {
-    $('#div').slideDown('slow');
-})
+// $('#btn2').click(() => {
+//     $('#div').slideDown('slow');
+// })
 
-$('#btn3').click(() => {
-    $('#div').toggle('slow');
-})
+// $('#btn3').click(() => {
+//     $('#div').toggle('slow');
+// })
 
 
 
