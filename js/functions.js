@@ -1,4 +1,5 @@
 
+moment.locale('es')
 
 // FECHA DEL DIA
 window.onload = function () {
@@ -10,6 +11,21 @@ window.onload = function () {
   if (dia < 10) dia = "0" + dia; //agrega cero si la hora menor de 10
   if (mes < 10) mes = "0" + mes; //agrega cero si los minutos menor de 10
   document.getElementById("fechaActual").value = ano + "-" + mes + "-" + dia;
+  
+};
+
+const fechaya = function () {
+  let fecha = new Date(); //Fecha actual
+  let mes = fecha.getMonth() + 1; //obteniendo mes
+  let dia = fecha.getDate(); //obteniendo dia
+  let ano = fecha.getFullYear(); //obteniendo año
+
+  if (dia < 10) dia = "0" + dia; //agrega cero si la hora menor de 10
+  if (mes < 10) mes = "0" + mes; //agrega cero si los minutos menor de 10
+  document.getElementById("fechaActual1").value = ano + "-" + mes + "-" + dia;
+  document.getElementById("fechaActual2").value = ano + "-" + mes + "-" + dia;
+  document.getElementById("fechaActual3").value = ano + "-" + mes + "-" + dia;
+  
 };
 
 
@@ -113,7 +129,7 @@ function nuevoMovimientoIngreso() {
 //AGREGA UN MOVIMIENTO GASTO A LA TABLA Y AL ARRAY
 function nuevoMovimientoIngresoSalida() {
   for (let index = inOutt.length - 1; index < inOutt.length; index++) {
-    let agregarATabla = document.getElementById("tablaDeMoviemientos");
+    
 
     $('#tablaDeMoviemientos').prepend (`<tr id="ingresoRojo">
                                     <th scope="row" class="hiddDate">${inOutt[index].inOut}</th>
@@ -125,24 +141,25 @@ function nuevoMovimientoIngresoSalida() {
                                     </tr>`);
   }
 }
+console.log(inOutt);
 
 //BORRA FILA DE LA TABLA
 function deleteRow(btn) {
   var row = btn.parentNode.parentNode;
   row.parentNode.removeChild(row);
   let ver = btn.id
-  let probar  = inOutt.filter(inOutt => inOutt.id == ver);
-  console.log(probar[0].id);
+  console.log(ver);
+
+  let probar  = inOutt.find(inOutt => inOutt.id == ver);
+ console.log(probar);
+
+  let possArry = inOutt.indexOf(probar);
+  console.log(possArry);
   
+  let elimColumn = inOutt.splice(inOutt[possArry], 1);
+  console.log(elimColumn);
   
-  for (let i = 0; i < inOutt.length; i++){
-    if(inOutt[i].id === probar[0].id ){
-     
-        inOutt.splice(inOutt[i], 1);
-        
-    }
-  }
-  console.log(inOutt);
+  // console.log(inOutt);
   
 }
 
@@ -178,7 +195,7 @@ function barradegastos() {
 
 
 function progresoGastos() {
-  let comidaBarra = 0;
+let comidaBarra = 0;
 let transporteBarra = 0;
 let viviendaBarra = 0;
 let hobbiesBarra = 0;
@@ -228,6 +245,7 @@ let variosBarra = 0;
   $('#barServicios').css ('width', serviciosBarra + "%");
   
   $('#barVarios').css ('width', variosBarra + "%");
+ 
  
 }
 
@@ -346,3 +364,449 @@ $('#pdf').click(function() {
 	
 })
 
+
+function actualizarDinero() {
+  for (let index = 0; index < inOutt.length; index++) {
+    // let agregarATabla = document.getElementById("tablaDeMoviemientos");
+    if (inOutt[index].trans === "E") {
+      $('#tablaDeMoviemientos').prepend (`<tr id="ingresoRojo">
+                                <th scope="row" class="hiddDate">${inOutt[index].inOut}</th>
+                                <td>${inOutt[index].rubro}</td>
+                                <td>$ ${inOutt[index].importe}</td>
+                                <td><button type="button" class="btn btn-danger" id="${inOutt[index].id}" onclick="deleteRow(this)">
+                                X
+                              </button></td>
+                              </tr>`);
+    } else {
+      $('#tablaDeMoviemientos').prepend (`<tr id="ingresoVerde">
+                                <th scope="row" class="hiddDate">${inOutt[index].inOut}</th>
+                                <td>${inOutt[index].rubro}</td>
+                                <td>$ ${inOutt[index].importe}</td>
+                                <td><button type="button" class="btn btn-danger" id="${inOutt[index].id}" onclick="deleteRow(this)">
+                                X
+                              </button></td>
+                              </tr>`);
+    }
+  }
+}
+
+
+let arrayDia = [];
+$('#btnActualizarFecha').click(function() {
+    let fechaSeleccionada = document.getElementById("fechaActual1").value;
+    $("#tablaDeMoviemientosDia tr").remove(); 
+
+
+
+  for (let index = 0; index < inOutt.length; index++) {
+    if (inOutt[index].inOut == fechaSeleccionada) {
+      if (inOutt[index].trans === "E") {
+        $('#tablaDeMoviemientosDia').prepend (`<tr id="ingresoRojo">
+                                  <th scope="row" class="hiddDate">${inOutt[index].inOut}</th>
+                                  <td>${inOutt[index].rubro}</td>
+                                  <td>$ ${inOutt[index].importe}</td>
+                                  <td><button type="button" class="btn btn-danger" id="${inOutt[index].id}" onclick="deleteRow(this)">
+                                  X
+                                </button></td>
+                                </tr>`);
+      } else {
+        $('#tablaDeMoviemientosDia').prepend (`<tr id="ingresoVerde">
+                                  <th scope="row" class="hiddDate">${inOutt[index].inOut}</th>
+                                  <td>${inOutt[index].rubro}</td>
+                                  <td>$ ${inOutt[index].importe}</td>
+                                  <td><button type="button" class="btn btn-danger" id="${inOutt[index].id}" onclick="deleteRow(this)">
+                                  X
+                                </button></td>
+                                </tr>`);
+      }
+      
+      arrayDia.push({
+        id: inOutt[index].id,
+        inOut: inOutt[index].adddate,
+        rubro: inOutt[index].rubro, 
+        importe: inOutt[index].importe,
+        trans: inOutt[index].trans,
+        tipo: inOutt[index].tipo,
+      });
+      
+      
+        
+    }
+    
+//actualizo la barra del dia
+let comidaBarra = 0;
+let transporteBarra = 0;
+let viviendaBarra = 0;
+let hobbiesBarra = 0;
+let serviciosBarra = 0;
+let variosBarra = 0;
+
+for (let index = 0; index < arrayDia.length; index++) {
+  if (arrayDia[index].tipo === "comida") {
+    comidaBarra += arrayDia[index].importe;
+  } else if (arrayDia[index].tipo === "transporte") {
+    transporteBarra += arrayDia[index].importe;
+  } else if (arrayDia[index].tipo === "vivienda") {
+    viviendaBarra += arrayDia[index].importe;
+  } else if (arrayDia[index].tipo === "hobbies") {
+    hobbiesBarra += arrayDia[index].importe;
+  } else if (arrayDia[index].tipo === "servicios") {
+    serviciosBarra += arrayDia[index].importe;
+  } else if (arrayDia[index].tipo === "varios") {
+    variosBarra += arrayDia[index].importe;
+  }
+}
+
+  gastosTotales =
+    transporteBarra +
+    comidaBarra +
+    viviendaBarra +
+    hobbiesBarra +
+    serviciosBarra +
+    variosBarra;
+    
+  comidaBarra = parseInt((comidaBarra * 100) / gastosTotales);
+  transporteBarra = parseInt((transporteBarra * 100) / gastosTotales);
+  viviendaBarra = parseInt((viviendaBarra * 100) / gastosTotales);
+  hobbiesBarra = parseInt((hobbiesBarra * 100) / gastosTotales);
+  serviciosBarra = parseInt((serviciosBarra * 100) / gastosTotales);
+  variosBarra = parseInt((variosBarra * 100) / gastosTotales);
+  
+
+ //barras dia
+ $('#barComidaDia').css ('width', comidaBarra + "%");
+
+ $('#barTransporteDia').css ('width', transporteBarra + "%");
+ 
+ $('#barViviendaDia').css ('width', viviendaBarra + "%");
+
+ $('#barHobbiesDia').css ('width', hobbiesBarra + "%");
+
+ $('#barServiciosDia').css ('width', serviciosBarra + "%");
+ 
+ $('#barVariosDias').css ('width', variosBarra + "%");
+    
+  }
+  
+  
+});
+
+
+const fechaDiaSeleccionado = function () {
+  const hoy = moment().subtract(1, 'month');
+
+  let mes = hoy.format (('M')); //obteniendo mes
+  let dia = hoy.format (('D')); //obteniendo dia
+  let ano = hoy.format (('Y')); //obteniendo año
+
+  if (dia < 10) dia = "0" + dia; //agrega cero si la hora menor de 10
+  if (mes < 10) mes = "0" + mes; //agrega cero si los minutos menor de 10
+  let fechaMes = ano + "-" + mes + "-" + dia;
+  let arrayMes = [];
+  
+
+  for (let index = 0; index < inOutt.length; index++) {
+    if (inOutt[index].inOut > fechaMes) {
+      if (inOutt[index].trans === "E") {
+        $('#tablaDeMoviemientosMes').prepend (`<tr id="ingresoRojo">
+                                  <th scope="row" class="hiddDate">${inOutt[index].inOut}</th>
+                                  <td>${inOutt[index].rubro}</td>
+                                  <td>$ ${inOutt[index].importe}</td>
+                                  <td><button type="button" class="btn btn-danger" id="${inOutt[index].id}" onclick="deleteRow(this)">
+                                  X
+                                </button></td>
+                                </tr>`);
+      } else {
+        $('#tablaDeMoviemientosMes').prepend (`<tr id="ingresoVerde">
+                                  <th scope="row" class="hiddDate">${inOutt[index].inOut}</th>
+                                  <td>${inOutt[index].rubro}</td>
+                                  <td>$ ${inOutt[index].importe}</td>
+                                  <td><button type="button" class="btn btn-danger" id="${inOutt[index].id}" onclick="deleteRow(this)">
+                                  X
+                                </button></td>
+                                </tr>`);
+      }
+      
+      arrayMes.push({
+        id: inOutt[index].id,
+        inOut: inOutt[index].adddate,
+        rubro: inOutt[index].rubro, 
+        importe: inOutt[index].importe,
+        trans: inOutt[index].trans,
+        tipo: inOutt[index].tipo,
+      });
+      
+      
+      
+    }
+//actualizo la barra del mes
+let comidaBarra = 0;
+let transporteBarra = 0;
+let viviendaBarra = 0;
+let hobbiesBarra = 0;
+let serviciosBarra = 0;
+let variosBarra = 0;
+  for (let index = 0; index < arrayMes.length; index++) {
+    if (arrayMes[index].tipo === "comida") {
+      comidaBarra += arrayMes[index].importe;
+    } else if (arrayMes[index].tipo === "transporte") {
+      transporteBarra += arrayMes[index].importe;
+    } else if (arrayMes[index].tipo === "vivienda") {
+      viviendaBarra += arrayMes[index].importe;
+    } else if (arrayMes[index].tipo === "hobbies") {
+      hobbiesBarra += arrayMes[index].importe;
+    } else if (arrayMes[index].tipo === "servicios") {
+      serviciosBarra += arrayMes[index].importe;
+    } else if (arrayMes[index].tipo === "varios") {
+      variosBarra += arrayMes[index].importe;
+    }
+  }
+
+  gastosTotales =
+    transporteBarra +
+    comidaBarra +
+    viviendaBarra +
+    hobbiesBarra +
+    serviciosBarra +
+    variosBarra;
+    
+  comidaBarra = parseInt((comidaBarra * 100) / gastosTotales);
+  transporteBarra = parseInt((transporteBarra * 100) / gastosTotales);
+  viviendaBarra = parseInt((viviendaBarra * 100) / gastosTotales);
+  hobbiesBarra = parseInt((hobbiesBarra * 100) / gastosTotales);
+  serviciosBarra = parseInt((serviciosBarra * 100) / gastosTotales);
+  variosBarra = parseInt((variosBarra * 100) / gastosTotales);
+  
+
+ //barras mes
+ $('#barComidaMes').css ('width', comidaBarra + "%");
+
+ $('#barTransporteMes').css ('width', transporteBarra + "%");
+ 
+ $('#barViviendaMes').css ('width', viviendaBarra + "%");
+
+ $('#barHobbiesMes').css ('width', hobbiesBarra + "%");
+
+ $('#barServiciosMes').css ('width', serviciosBarra + "%");
+ 
+ $('#barVariosMes').css ('width', variosBarra + "%");
+    
+  }
+};
+
+
+
+
+
+
+
+//calculo la fecha que fue el mes pasado y la pongo en un formato en el que la pueda comparar 
+//con la fecha de hoy
+const fechaMesPasado = function () {
+  const hoy = moment().subtract(1, 'month');
+
+  let mes = hoy.format (('M')); //obteniendo mes
+  let dia = hoy.format (('D')); //obteniendo dia
+  let ano = hoy.format (('Y')); //obteniendo año
+
+  if (dia < 10) dia = "0" + dia; //agrega cero si la hora menor de 10
+  if (mes < 10) mes = "0" + mes; //agrega cero si los minutos menor de 10
+  let fechaMes = ano + "-" + mes + "-" + dia;
+  let arrayMes = [];
+  
+
+  for (let index = 0; index < inOutt.length; index++) {
+    if (inOutt[index].inOut > fechaMes) {
+      if (inOutt[index].trans === "E") {
+        $('#tablaDeMoviemientosMes').prepend (`<tr id="ingresoRojo">
+                                  <th scope="row" class="hiddDate">${inOutt[index].inOut}</th>
+                                  <td>${inOutt[index].rubro}</td>
+                                  <td>$ ${inOutt[index].importe}</td>
+                                  <td><button type="button" class="btn btn-danger" id="${inOutt[index].id}" onclick="deleteRow(this)">
+                                  X
+                                </button></td>
+                                </tr>`);
+      } else {
+        $('#tablaDeMoviemientosMes').prepend (`<tr id="ingresoVerde">
+                                  <th scope="row" class="hiddDate">${inOutt[index].inOut}</th>
+                                  <td>${inOutt[index].rubro}</td>
+                                  <td>$ ${inOutt[index].importe}</td>
+                                  <td><button type="button" class="btn btn-danger" id="${inOutt[index].id}" onclick="deleteRow(this)">
+                                  X
+                                </button></td>
+                                </tr>`);
+      }
+      
+      arrayMes.push({
+        id: inOutt[index].id,
+        inOut: inOutt[index].adddate,
+        rubro: inOutt[index].rubro, 
+        importe: inOutt[index].importe,
+        trans: inOutt[index].trans,
+        tipo: inOutt[index].tipo,
+      });
+      
+      
+      
+    }
+//actualizo la barra del mes
+let comidaBarra = 0;
+let transporteBarra = 0;
+let viviendaBarra = 0;
+let hobbiesBarra = 0;
+let serviciosBarra = 0;
+let variosBarra = 0;
+  for (let index = 0; index < arrayMes.length; index++) {
+    if (arrayMes[index].tipo === "comida") {
+      comidaBarra += arrayMes[index].importe;
+    } else if (arrayMes[index].tipo === "transporte") {
+      transporteBarra += arrayMes[index].importe;
+    } else if (arrayMes[index].tipo === "vivienda") {
+      viviendaBarra += arrayMes[index].importe;
+    } else if (arrayMes[index].tipo === "hobbies") {
+      hobbiesBarra += arrayMes[index].importe;
+    } else if (arrayMes[index].tipo === "servicios") {
+      serviciosBarra += arrayMes[index].importe;
+    } else if (arrayMes[index].tipo === "varios") {
+      variosBarra += arrayMes[index].importe;
+    }
+  }
+
+  gastosTotales =
+    transporteBarra +
+    comidaBarra +
+    viviendaBarra +
+    hobbiesBarra +
+    serviciosBarra +
+    variosBarra;
+    
+  comidaBarra = parseInt((comidaBarra * 100) / gastosTotales);
+  transporteBarra = parseInt((transporteBarra * 100) / gastosTotales);
+  viviendaBarra = parseInt((viviendaBarra * 100) / gastosTotales);
+  hobbiesBarra = parseInt((hobbiesBarra * 100) / gastosTotales);
+  serviciosBarra = parseInt((serviciosBarra * 100) / gastosTotales);
+  variosBarra = parseInt((variosBarra * 100) / gastosTotales);
+  
+
+ //barras mes
+ $('#barComidaMes').css ('width', comidaBarra + "%");
+
+ $('#barTransporteMes').css ('width', transporteBarra + "%");
+ 
+ $('#barViviendaMes').css ('width', viviendaBarra + "%");
+
+ $('#barHobbiesMes').css ('width', hobbiesBarra + "%");
+
+ $('#barServiciosMes').css ('width', serviciosBarra + "%");
+ 
+ $('#barVariosMes').css ('width', variosBarra + "%");
+    
+  }
+};
+
+
+//calculo la fecha que fue el año pasado y la pongo en un formato en el que la pueda comparar 
+//con la fecha de hoy
+
+const fechaAnioPasado = function () {
+  const hoy = moment().subtract(1, 'year');
+
+  let mes = hoy.format (('M')); //obteniendo mes
+  let dia = hoy.format (('D')); //obteniendo dia
+  let ano = hoy.format (('Y')); //obteniendo año
+
+  if (dia < 10) dia = "0" + dia; //agrega cero si la hora menor de 10
+  if (mes < 10) mes = "0" + mes; //agrega cero si los minutos menor de 10
+  let fechaAnio = ano + "-" + mes + "-" + dia;
+  let arrayAnio = [];
+  
+
+  for (let index = 0; index < inOutt.length; index++) {
+    if (inOutt[index].inOut > fechaAnio) {
+      if (inOutt[index].trans === "E") {
+        $('#tablaDeMoviemientosAnio').prepend (`<tr id="ingresoRojo">
+                                  <th scope="row" class="hiddDate">${inOutt[index].inOut}</th>
+                                  <td>${inOutt[index].rubro}</td>
+                                  <td>$ ${inOutt[index].importe}</td>
+                                  <td><button type="button" class="btn btn-danger" id="${inOutt[index].id}" onclick="deleteRow(this)">
+                                  X
+                                </button></td>
+                                </tr>`);
+      } else {
+        $('#tablaDeMoviemientosAnio').prepend (`<tr id="ingresoVerde">
+                                  <th scope="row" class="hiddDate">${inOutt[index].inOut}</th>
+                                  <td>${inOutt[index].rubro}</td>
+                                  <td>$ ${inOutt[index].importe}</td>
+                                  <td><button type="button" class="btn btn-danger" id="${inOutt[index].id}" onclick="deleteRow(this)">
+                                  X
+                                </button></td>
+                                </tr>`);
+      }
+      
+    }
+    arrayAnio.push({
+      id: inOutt[index].id,
+      inOut: inOutt[index].adddate,
+      rubro: inOutt[index].rubro, 
+      importe: inOutt[index].importe,
+      trans: inOutt[index].trans,
+      tipo: inOutt[index].tipo,
+    });
+    
+  }
+  let comidaBarra = 0;
+let transporteBarra = 0;
+let viviendaBarra = 0;
+let hobbiesBarra = 0;
+let serviciosBarra = 0;
+let variosBarra = 0;
+  for (let index = 0; index < arrayAnio.length; index++) {
+    if (arrayAnio[index].tipo === "comida") {
+      comidaBarra += arrayAnio[index].importe;
+    } else if (arrayAnio[index].tipo === "transporte") {
+      transporteBarra += arrayAnio[index].importe;
+    } else if (arrayAnio[index].tipo === "vivienda") {
+      viviendaBarra += arrayAnio[index].importe;
+    } else if (arrayAnio[index].tipo === "hobbies") {
+      hobbiesBarra += arrayAnio[index].importe;
+    } else if (arrayAnio[index].tipo === "servicios") {
+      serviciosBarra += arrayAnio[index].importe;
+    } else if (arrayAnio[index].tipo === "varios") {
+      variosBarra += arrayAnio[index].importe;
+    }
+  }
+
+  gastosTotales =
+    transporteBarra +
+    comidaBarra +
+    viviendaBarra +
+    hobbiesBarra +
+    serviciosBarra +
+    variosBarra;
+    
+  comidaBarra = parseInt((comidaBarra * 100) / gastosTotales);
+  transporteBarra = parseInt((transporteBarra * 100) / gastosTotales);
+  viviendaBarra = parseInt((viviendaBarra * 100) / gastosTotales);
+  hobbiesBarra = parseInt((hobbiesBarra * 100) / gastosTotales);
+  serviciosBarra = parseInt((serviciosBarra * 100) / gastosTotales);
+  variosBarra = parseInt((variosBarra * 100) / gastosTotales);
+  
+
+ //barras Año
+ $('#barComidaAnio').css ('width', comidaBarra + "%");
+
+ $('#barTransporteAnio').css ('width', transporteBarra + "%");
+ 
+ $('#barViviendaAnio').css ('width', viviendaBarra + "%");
+
+ $('#barHobbiesAnio').css ('width', hobbiesBarra + "%");
+
+ $('#barServiciosAnio').css ('width', serviciosBarra + "%");
+ 
+ $('#barVariosAnio').css ('width', variosBarra + "%");
+  
+};
+
+
+
+  

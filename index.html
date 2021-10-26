@@ -62,25 +62,32 @@
   <div class="fondoSuperior" id="fondoSuperior">
     <h5 class="tituloBalance text-center">BALANCE</h5>
     <p class="dineroDisponible text-center">$<span id="dineroDisponible"></span><i class="fas fa-plus-circle addCircle"
-       data-bs-toggle="modal" data-bs-target="#modalAgregarDinero"></i></p>
+       data-bs-toggle="modal" data-bs-target="#modalAgregarDinero" title="Agregar Ingreso"></i></p>
     <div class="contenidoHome">
       <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#dia" type="button"
-            role="tab" aria-controls="home" aria-selected="true">Día</button>
+          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#todo" type="button"
+            role="tab" aria-controls="home" aria-selected="true">Todo</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#dia" type="button"
+            role="tab" aria-controls="profile" aria-selected="false">Día</button>
         </li>
         <li class="nav-item" role="presentation">
           <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#semanas" type="button"
-            role="tab" aria-controls="profile" aria-selected="false">Semana</button>
+            role="tab" aria-controls="profile" aria-selected="false">Mes</button>
         </li>
         <li class="nav-item" role="presentation">
           <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#mes" type="button" role="tab"
-            aria-controls="contact" aria-selected="false">Mes</button>
+            aria-controls="contact" aria-selected="false">Año</button>
         </li>
       </ul>
       <div class="tab-content " id="myTabContent">
-        <!-- POGRESO DIA -->
-        <div class="tab-pane fondoSombreado fade show active" id="dia" role="tabpanel" aria-labelledby="home-tab">
+
+
+
+        <!-- POGRESO TODO -->
+        <div class="tab-pane fondoSombreado fade show active" id="todo" role="tabpanel" aria-labelledby="home-tab">
           <div class="date text-center">
             <input type="date" id="fechaActual" value="">
           </div>
@@ -110,7 +117,7 @@
           </div>
           <div class="iconMore text-end">
             <i class="fas fa-minus-circle minusCircle"  data-bs-toggle="modal"
-              data-bs-target="#modarAgregarEgreso"></i>
+              data-bs-target="#modarAgregarEgreso" title="Agregar Egreso"></i>
 
           </div>
 
@@ -131,50 +138,173 @@
 
 
         </div>
+
+
+
+
+        <!-- PROGRESO DIA -->
+        <div class="tab-pane fondoSombreado fade " id="dia" role="tabpanel" aria-labelledby="home-tab">
+          <div class="date text-center">
+            <input type="date" id="fechaActual1" value="">
+            <button type="button" class="btn btn-success"
+            id="btnActualizarFecha">Actualizar</button>
+          </div>
+          <div class="progress">
+            <div class="progress-bar bg-success progress-bar-striped" role="progressbar" aria-valuenow="25"
+              aria-valuemin="0" aria-valuemax="100" id="barComidaDia">Comida</div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" " aria-valuenow=" 25"
+              aria-valuemin="0" aria-valuemax="100" id="barTransporteDia">Transporte</div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar bg-info progress-bar-striped" role="progressbar" " aria-valuenow=" 25"
+              aria-valuemin="0" aria-valuemax="100" id="barViviendaDia">Vivienda</div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar bg-warning progress-bar-striped" role="progressbar" " aria-valuenow=" 25"
+              aria-valuemin="0" aria-valuemax="100" id="barHobbiesDia">Hobbies</div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" " aria-valuenow=" 25"
+              aria-valuemin="0" aria-valuemax="100" id="barServiciosDia">Servicios</div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar bg-dark progress-bar-striped" role="progressbar" " aria-valuenow=" 25"
+              aria-valuemin="0" aria-valuemax="100" id="barVariosDia">Varios</div>
+          </div>
+          <div class="iconMore text-end">
+            <i class="fas fa-minus-circle minusCircle"  data-bs-toggle="modal"
+              data-bs-target="#modarAgregarEgreso" title="Agregar Egreso"></i>
+
+          </div>
+
+          <div class="movimientos">
+            <table class="table table table-success table-striped table-responsive" id="tabla">
+              <thead>
+                <tr>
+                  <th scope="col" class="hiddDate">Fecha</th>
+                  <th scope="col">Rubro</th>
+                  <th scope="col">Importe</th>
+                  <th scope="col">Borrar</th>
+                </tr>
+              </thead>
+              <tbody id="tablaDeMoviemientosDia">
+              </tbody>
+            </table>
+          </div>
+
+
+        </div>
+
+
+
+
+
+
+
         <!-- PROGRESO SEMANA -->
         <div class="tab-pane fondoSombreado fade" id="semanas" role="tabpanel" aria-labelledby="profile-tab">
-          <div class="progress">
-            <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: 25%;"
-              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+          <div class="date text-center">
+            <input type="date" id="fechaActual2" value="">
           </div>
           <div class="progress">
-            <div class="progress-bar bg-info progress-bar-striped" role="progressbar" style="width: 85%;"
-              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">85%</div>
+            <div class="progress-bar bg-success progress-bar-striped" role="progressbar" aria-valuenow="25"
+              aria-valuemin="0" aria-valuemax="100" id="barComidaMes">Comida</div>
           </div>
           <div class="progress">
-            <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 15%;"
-              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">15%</div>
+            <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" " aria-valuenow=" 25"
+              aria-valuemin="0" aria-valuemax="100" id="barTransporteMes">Transporte</div>
           </div>
           <div class="progress">
-            <div class="progress-bar bg-warning progress-bar-striped" role="progressbar" style="width: 2%;"
-              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">2%</div>
+            <div class="progress-bar bg-info progress-bar-striped" role="progressbar" " aria-valuenow=" 25"
+              aria-valuemin="0" aria-valuemax="100" id="barViviendaMes">Vivienda</div>
           </div>
+          <div class="progress">
+            <div class="progress-bar bg-warning progress-bar-striped" role="progressbar" " aria-valuenow=" 25"
+              aria-valuemin="0" aria-valuemax="100" id="barHobbiesMes">Hobbies</div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" " aria-valuenow=" 25"
+              aria-valuemin="0" aria-valuemax="100" id="barServiciosMes">Servicios</div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar bg-dark progress-bar-striped" role="progressbar" " aria-valuenow=" 25"
+              aria-valuemin="0" aria-valuemax="100" id="barVariosMes">Varios</div>
+          </div>
+          <div class="iconMore text-end">
+            <i class="fas fa-minus-circle minusCircle"  data-bs-toggle="modal"
+              data-bs-target="#modarAgregarEgreso" title="Agregar Egreso"></i>
+
+          </div>
+
         
-          <!-- <div id="animacionesCombinadas">
-            
-          </div> -->
+          <div class="movimientos">
+            <table class="table table table-success table-striped table-responsive" id="tabla">
+              <thead>
+                <tr>
+                  <th scope="col" class="hiddDate">Fecha</th>
+                  <th scope="col">Rubro</th>
+                  <th scope="col">Importe</th>
+                  <th scope="col">Borrar</th>
+                </tr>
+              </thead>
+              <tbody id="tablaDeMoviemientosMes">
+              </tbody>
+            </table>
+          </div>
          
          
         </div>
         <!-- PROGRESO MES -->
         <div class="tab-pane fondoSombreado fade" id="mes" role="tabpanel" aria-labelledby="contact-tab">
-          <div class="progress">
-            <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: 25%;"
-              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+          <div class="date text-center">
+            <input type="date" id="fechaActual3" value="">
           </div>
           <div class="progress">
-            <div class="progress-bar bg-info progress-bar-striped" role="progressbar" style="width: 85%;"
-              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">85%</div>
+            <div class="progress-bar bg-success progress-bar-striped" role="progressbar" aria-valuenow="25"
+              aria-valuemin="0" aria-valuemax="100" id="barComidaAnio">Comida</div>
           </div>
           <div class="progress">
-            <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" style="width: 15%;"
-              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">15%</div>
+            <div class="progress-bar bg-danger progress-bar-striped" role="progressbar" " aria-valuenow=" 25"
+              aria-valuemin="0" aria-valuemax="100" id="barTransporteAnio">Transporte</div>
           </div>
           <div class="progress">
-            <div class="progress-bar bg-warning progress-bar-striped" role="progressbar" style="width: 2%;"
-              aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">2%</div>
+            <div class="progress-bar bg-info progress-bar-striped" role="progressbar" " aria-valuenow=" 25"
+              aria-valuemin="0" aria-valuemax="100" id="barViviendaAnio">Vivienda</div>
           </div>
-          <!-- <div class="ajaxEjemplo"> -->
+          <div class="progress">
+            <div class="progress-bar bg-warning progress-bar-striped" role="progressbar" " aria-valuenow=" 25"
+              aria-valuemin="0" aria-valuemax="100" id="barHobbiesAnio">Hobbies</div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar bg-primary progress-bar-striped" role="progressbar" " aria-valuenow=" 25"
+              aria-valuemin="0" aria-valuemax="100" id="barServiciosAnio">Servicios</div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar bg-dark progress-bar-striped" role="progressbar" " aria-valuenow=" 25"
+              aria-valuemin="0" aria-valuemax="100" id="barVariosAnio">Varios</div>
+          </div>
+          <div class="iconMore text-end">
+            <i class="fas fa-minus-circle minusCircle"  data-bs-toggle="modal"
+              data-bs-target="#modarAgregarEgreso" title="Agregar Egreso"></i>
+
+          </div>
+
+          <div class="movimientos">
+            <table class="table table table-success table-striped table-responsive" id="tabla">
+              <thead>
+                <tr>
+                  <th scope="col" class="hiddDate">Fecha</th>
+                  <th scope="col">Rubro</th>
+                  <th scope="col">Importe</th>
+                  <th scope="col">Borrar</th>
+                </tr>
+              </thead>
+              <tbody id="tablaDeMoviemientosAnio">
+              </tbody>
+            </table>
+          </div>
            
           </div>
         </div>
@@ -250,6 +380,7 @@
       </div>
     </div>
   </div>
+  <script src="./js/moment-with-locales.min.js"></script>
   <script src="./js/jspdf.min.js"></script>
   <script src="./js/datos.js"></script>
   <script src="./js/functions.js"></script>

@@ -13,6 +13,9 @@ actualizarDinero();
 let saldoAcumulado = 0;
 barradegastos();
 progresoGastos();
+fechaMesPasado();
+fechaAnioPasado();
+fechaya();
 
 
 
