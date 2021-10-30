@@ -148,18 +148,20 @@ function deleteRow(btn) {
   var row = btn.parentNode.parentNode;
   row.parentNode.removeChild(row);
   let ver = btn.id
-  console.log(ver);
+ 
 
   let probar  = inOutt.find(inOutt => inOutt.id == ver);
- console.log(probar);
+ 
 
   let possArry = inOutt.indexOf(probar);
-  console.log(possArry);
   
-  let elimColumn = inOutt.splice(inOutt[possArry], 1);
-  console.log(elimColumn);
+
+  let elimColumn = inOutt.splice(possArry, 1);
+
+  guardarLocal('movimientos', JSON.stringify(inOutt));
+  progresoGastos();
   
-  // console.log(inOutt);
+
   
 }
 

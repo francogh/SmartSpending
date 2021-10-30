@@ -31,8 +31,7 @@ $('#btnAgregarDinero').on('click', () => {
 $('#btnAgregarEgreso').on('click', () => { 
   addOut();
   nuevoMovimientoIngresoSalida();
-  progresoGastos();
-  barradegastos()
+    barradegastos()
 })
 
 
