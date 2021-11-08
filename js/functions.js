@@ -7,7 +7,6 @@ window.onload = function () {
   let mes = fecha.getMonth() + 1; //obteniendo mes
   let dia = fecha.getDate(); //obteniendo dia
   let ano = fecha.getFullYear(); //obteniendo año
-
   if (dia < 10) dia = "0" + dia; //agrega cero si la hora menor de 10
   if (mes < 10) mes = "0" + mes; //agrega cero si los minutos menor de 10
   document.getElementById("fechaActual").value = ano + "-" + mes + "-" + dia;
@@ -19,7 +18,6 @@ const fechaya = function () {
   let mes = fecha.getMonth() + 1; //obteniendo mes
   let dia = fecha.getDate(); //obteniendo dia
   let ano = fecha.getFullYear(); //obteniendo año
-
   if (dia < 10) dia = "0" + dia; //agrega cero si la hora menor de 10
   if (mes < 10) mes = "0" + mes; //agrega cero si los minutos menor de 10
   document.getElementById("fechaActual1").value = ano + "-" + mes + "-" + dia;
@@ -48,14 +46,12 @@ const addIn = () => {
     tipo: tipo,
   });
   saldoAcumulado = saldoAcumulado + importe;
-
   let dinero = document.getElementById("dineroDisponible");
-
   dinero.innerHTML = saldoAcumulado;
-
   document.getElementById("conceptoDineroIngresar").value = "";
   document.getElementById("dineroAIngresar").value = "";
   guardarLocal('movimientos', JSON.stringify(inOutt));
+ 
 };
 
 //AGREGO UN MOVIMIENTO DE GASTO AL ARRAY Y RESTO EL DINERO AL TOTAL
@@ -83,12 +79,13 @@ const addOut = () => {
   document.getElementById("montoAQuitar").value = "";
   guardarLocal('movimientos', JSON.stringify(inOutt));
   progresoGastos();
+  
 };
 
 //TOMA TODOS LOS MOVIMIENTOS DEL ARRAY Y LOS AGREGA A LA TABLA
 function actualizarDinero() {
   for (let index = 0; index < inOutt.length; index++) {
-    // let agregarATabla = document.getElementById("tablaDeMoviemientos");
+
     if (inOutt[index].trans === "E") {
       $('#tablaDeMoviemientos').prepend (`<tr id="ingresoRojo">
                                 <th scope="row" class="hiddDate">${inOutt[index].inOut}</th>
@@ -110,6 +107,8 @@ function actualizarDinero() {
     }
   }
 }
+
+
 
 //AGREGA EL INGRESO DE DINERO A LA TABLA CUANDO AGREGAMOS UN MOVIMIENTO NUEVO
 function nuevoMovimientoIngreso() {
@@ -141,7 +140,7 @@ function nuevoMovimientoIngresoSalida() {
                                     </tr>`);
   }
 }
-console.log(inOutt);
+
 
 //BORRA FILA DE LA TABLA
 function deleteRow(btn) {
@@ -616,7 +615,7 @@ const fechaMesPasado = function () {
   let fechaMes = ano + "-" + mes + "-" + dia;
   let arrayMes = [];
   
-
+  
   for (let index = 0; index < inOutt.length; index++) {
     if (inOutt[index].inOut > fechaMes) {
       if (inOutt[index].trans === "E") {
@@ -722,7 +721,7 @@ const fechaAnioPasado = function () {
   let fechaAnio = ano + "-" + mes + "-" + dia;
   let arrayAnio = [];
   
-
+  $("#tablaDeMoviemientosMes tr").remove(); 
   for (let index = 0; index < inOutt.length; index++) {
     if (inOutt[index].inOut > fechaAnio) {
       if (inOutt[index].trans === "E") {

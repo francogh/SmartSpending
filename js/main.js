@@ -17,21 +17,39 @@ fechaMesPasado();
 fechaAnioPasado();
 fechaya();
 
+$('.pestaniaMes').click(function() {
+  $("#tablaDeMoviemientosMes tr").remove();
+  fechaMesPasado();
+})
 
+$('.pestaniaAnio').click(function() {
+  $("#tablaDeMoviemientosAnio tr").remove();
+  fechaAnioPasado();
+
+})
 
 $('#btnAgregarDinero').on('click', () => {
   addIn();
     nuevoMovimientoIngreso();
     //agregar el movimiento a la tabla
+    $("#tablaDeMoviemientosMes tr").remove();
+    $("#tablaDeMoviemientosAnio tr").remove();
+    fechaAnioPasado();
+    fechaMesPasado();
+    barradegastos();
     
-    barradegastos()
 })
 
 
 $('#btnAgregarEgreso').on('click', () => { 
   addOut();
   nuevoMovimientoIngresoSalida();
-    barradegastos()
+  $("#tablaDeMoviemientosMes tr").remove();
+    $("#tablaDeMoviemientosAnio tr").remove();
+    fechaAnioPasado();
+    fechaMesPasado();
+    barradegastos();
+    
 })
 
 
